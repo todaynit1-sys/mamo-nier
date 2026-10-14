@@ -51,3 +51,34 @@ test('measurement CSV uses captured units after live state changes',async()=>{
   assert.match(output,/Benzene \(ppb\)/);
   assert.doesNotMatch(output,/Benzene \(ppm\)/);
 });
+
+async function reviewHelpers(extra={}){
+  const source=await fs.readFile(new URL('../src/research.js',import.meta.url),'utf8');
+  const scope=vm.createContext(extra);
+  for(const name of ['pointReview','concentrationFields','qualityOf']){
+    const start=source.indexOf('  function '+name+'('),end=source.indexOf('\n  }',start)+4;
+    assert.ok(start>=0&&end>start);
+    vm.runInContext(source.slice(start,end),scope);
+  }
+  return scope;
+}
+
+test('point review respects file order, boundaries and first maximum on ties',async()=>{
+  const scope=await reviewHelpers();const points=[{id:7,v:2},{id:99,v:8},{id:42,v:8}];
+  const normalize=value=>JSON.parse(JSON.stringify(value));
+  assert.deepEqual(normalize(scope.pointReview(points,99,p=>p.v)),{index:1,maximumIndex:1,canPrevious:true,canNext:true});
+  assert.equal(scope.pointReview(points,7,p=>p.v).canPrevious,false);
+  assert.equal(scope.pointReview(points,42,p=>p.v).canNext,false);
+  assert.deepEqual(normalize(scope.pointReview([],null,p=>p.v)),{index:-1,maximumIndex:-1,canPrevious:false,canNext:false});
+});
+
+test('quality records count PM missing cells and distinguish PM from VOC policy',async()=>{
+  const fields=['Latitude','Longitude','PM2.5 µg/m³','PM2.5 duplicate','PM10 µg/m³','NO2 µg/m³'];
+  const data=[{'PM2.5 µg/m³':'','PM10 µg/m³':'4','NO2 µg/m³':'invalid'},{'PM2.5 µg/m³':'2','PM10 µg/m³':'0','NO2 µg/m³':'3'}];
+  const scope=await reviewHelpers({Papa:{parse:()=>({meta:{fields},data,errors:[]})}});
+  const quality=scope.qualityOf('Latitude,Longitude\n37,127',[{}],'pm');
+  assert.equal(quality.nonNumericConcentrationCells,2);
+  assert.equal(quality.excluded,1);
+  assert.doesNotMatch(quality.missingValuePolicy,/TVOC|성분 합/);
+  assert.deepEqual(Array.from(scope.concentrationFields(['Time','Benzene(ppb)','TVOC(ppb)'],'voc')),['Benzene(ppb)','TVOC(ppb)']);
+});

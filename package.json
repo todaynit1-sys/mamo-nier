@@ -1,7 +1,7 @@
 {
   "name": "mamo-nier",
   "private": true,
-  "version": "6.3.0",
+  "version": "6.4.0",
   "scripts": {
     "build": "node scripts/build.mjs",
     "dev": "node scripts/serve.mjs"
