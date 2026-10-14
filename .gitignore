@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.omd/analysis/
+.omd/advice/
+.omd/proof/
+.env*
+*.log
