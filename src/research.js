@@ -47,6 +47,7 @@
   const tabs = aside.querySelector('.workspaceTabs'); tabs.after(panelAnalysis,panelFacilities);
   const headings = ['성분과 측정값','바람 조건','풍상 추적 설정','측정값 내 고농도 분류'];
   analysisCards.forEach((card,i)=>card.querySelector('h3').textContent=headings[i]);
+  byId('chemChartBox').insertAdjacentHTML('beforebegin',`<section class="measurementReview" id="measurementReview" aria-labelledby="measurementReviewTitle" hidden><h4 id="measurementReviewTitle">측정 지점 검토</h4><div id="dataQualitySummary" class="dataQuality" role="status"></div><label class="fieldLabel" for="measurementPoint">지점 · 시각 · 선택 성분 농도</label><select id="measurementPoint"></select><p class="hint" id="measurementPosition" role="status"></p><div class="pointButtons"><button class="btn" id="btnPreviousPoint" type="button">이전 지점</button><button class="btn" id="btnNextPoint" type="button">다음 지점</button><button class="btn" id="btnMaximumPoint" type="button">최고 농도</button><button class="btn" id="btnLocatePoint" type="button">지도에서 보기</button></div><p class="hint">파일 순서대로 검토합니다. 선택은 단일 지점 추적에 적용되며 중첩 분석은 고농도 지점 전체를 유지합니다.</p></section>`);
   // Retain the original report control identity, move it into the results panel.
   const panelExport = document.createElement('section');
   panelExport.id='panelExport';panelExport.className='workspacePanel';panelExport.hidden=true;panelExport.setAttribute('role','tabpanel');panelExport.setAttribute('aria-labelledby','tabExport');
@@ -59,7 +60,7 @@
   byId('btnFacSearch').onclick=facSearchRun;
   const regHint=byId('regBlock').querySelector('.hint');regHint.textContent='선택 지역 사업장 데이터는 앱에 포함되어 있습니다. 배경지도·기상 조회에는 인터넷 연결이 필요합니다. 출처: 환경부 대기오염물질 배출시설 설치사업장.';
   const credit = Array.from(aside.children).find(n=>n.tagName==='DIV'&&n.getAttribute('style')?.includes('text-align:center'));if(credit)credit.classList.add('workspaceCredit');
-  if(credit)for(const node of credit.childNodes)if(node.nodeType===Node.TEXT_NODE)node.textContent=node.textContent.replace(/v6\.1/g,'v6.3');
+  if(credit)for(const node of credit.childNodes)if(node.nodeType===Node.TEXT_NODE)node.textContent=node.textContent.replace(/v6\.1/g,'v6.4');
   document.body.insertAdjacentHTML('beforeend', `<div class="appStatus" id="appStatus" role="status" aria-live="polite"></div><dialog id="reportDialog" aria-labelledby="reportDialogTitle"><div class="dialogHeader"><div><p class="eyebrow">RESEARCH OUTPUT</p><h2 id="reportDialogTitle">분석 보고서</h2></div><button class="btn" id="btnCloseReport" type="button">닫기</button></div><p class="hint">인쇄 창에서 ‘PDF로 저장’을 선택하세요. A4 기준으로 지도·조건·후보 표를 나눠 출력합니다.</p><iframe id="reportFrame" title="분석 보고서 미리보기"></iframe><div class="dialogFooter"><span id="reportReady" role="status"></span><button class="btn primary" id="btnPrintReport" type="button" disabled>인쇄 · PDF로 저장</button></div></dialog><dialog id="helpDialog" aria-labelledby="helpTitle"><div class="dialogHeader"><h2 id="helpTitle">데이터 준비와 해석</h2><button class="btn" id="btnCloseHelp" type="button">닫기</button></div><ol class="helpSteps"><li><strong>지역과 파일</strong><p>사업장 지역을 선택한 뒤 CSV·TXT·XLSX·XLS 파일을 엽니다. Latitude·Longitude(또는 Longtitude)와 성분(ppb) 또는 TVOC 열이 필요합니다. 날짜·장비 정보가 없으면 결과 저장 패널에 직접 기록하세요.</p></li><li><strong>측정값과 바람</strong><p>성분·단위·유효 지점 수를 확인하세요. 바람은 직접 입력하거나 데이터 열 또는 기상청 관측을 사용합니다. 풍향은 바람이 불어오는 방향입니다.</p></li><li><strong>후보와 조건</strong><p>단일 지점 추적 또는 고농도 지점 중첩 분석을 선택합니다. 추적 거리·시간, 안정도, 업종·종별 필터가 결과에 영향을 줍니다.</p></li><li><strong>논문 자료 저장</strong><p>결과 저장 패널에서 지도, 후보 표, 측정값, 조건 JSON, PDF 보고서를 같은 분석 상태로 저장하세요. 자료 날짜가 확인되지 않으면 미기록으로 남깁니다.</p></li></ol><p class="notice">상위 백분위는 측정값 내부의 분류입니다. 간이 확산 범위와 후보 점수는 배출원 확정, 배출 기여율 또는 법정 기준 초과 판단에 사용할 수 없습니다. 예시 데이터는 기능 설명용 가상 자료입니다.</p></dialog>`);
   function status(text, persistent=false){clearTimeout(state.statusTimer);byId('appStatus').textContent=text;if(!persistent)state.statusTimer=setTimeout(()=>byId('appStatus').textContent='',6500);}
   function showPanel(name, focus=false){
@@ -99,10 +100,45 @@
   byId('facShowChk').parentElement.lastChild.textContent=' 사업장 표시·분석';
   const originalInit=initMap;
   initMap=function(){originalInit();L.control.scale({imperial:false,maxWidth:140}).addTo(map);byId('map').setAttribute('aria-label','측정 지점과 사업장 지도');map.on('moveend zoomend',refreshUi);state.mapReady=true;};
+  function pointReview(points,selectedId,valueOf){
+    const index=points.findIndex(p=>p.id===selectedId);
+    const maximumIndex=points.reduce((best,p,i)=>best<0||valueOf(p)>valueOf(points[best])?i:best,-1);
+    return {index,maximumIndex,canPrevious:index>0,canNext:index>=0&&index<points.length-1};
+  }
+  let reviewPoints=null,reviewComponent=null,reviewQuality=null;
+  function refreshPointReview(){
+    const hasData=S.points.length>0;byId('measurementReview').hidden=!hasData;if(!hasData)return;
+    const key=S.selChem+'|'+curUnit();
+    if(reviewPoints!==S.points||reviewComponent!==key){
+      byId('measurementPoint').innerHTML=S.points.map((p,i)=>`<option value="${i}">#${esc(p.id)} · ${esc(p.time||'시각 미기록')} · ${esc(number(chemVal(p)))} ${esc(curUnit())}</option>`).join('');
+      reviewPoints=S.points;reviewComponent=key;
+    }
+    const review=pointReview(S.points,S.selectedId,chemVal);byId('measurementPoint').value=String(review.index);
+    const position=review.index<0?'지점을 선택하세요.':`파일 순서 ${review.index+1} / ${S.points.length} · 지점 #${S.points[review.index].id}`;
+    if(byId('measurementPosition').textContent!==position)byId('measurementPosition').textContent=position;
+    byId('btnPreviousPoint').disabled=!review.canPrevious;byId('btnNextPoint').disabled=!review.canNext;
+    byId('btnMaximumPoint').disabled=review.maximumIndex<0||review.maximumIndex===review.index;byId('btnLocatePoint').disabled=review.index<0;
+    if(reviewQuality!==state.quality){
+      const q=state.quality;const warning=Boolean(q&&(q.excluded||q.nonNumericConcentrationCells||q.parserWarningCount));
+      byId('dataQualitySummary').dataset.warning=String(warning);
+      byId('dataQualitySummary').textContent=q?`원본 ${q.rows}행 · 유효 좌표 ${q.validPoints}개 · 좌표 제외 ${q.excluded}행\n원본 농도 빈값·비수치 ${q.nonNumericConcentrationCells}개 · 파일 구조 경고 ${q.parserWarningCount}개${warning?'\n'+q.missingValuePolicy+' 제외 행과 빈값은 원본 자료에서 확인하세요.':''}`:'입력 자료 처리 기록이 없습니다. 원본 자료를 확인하세요.';
+      reviewQuality=state.quality;
+    }
+  }
+  function chooseMeasurement(index,locate=false){
+    const point=S.points[index];if(!point)return;selectPoint(point.id);refreshPointReview();
+    if(locate&&map)map.panTo([point.lat,point.lon],{animate:false});
+  }
+  byId('measurementPoint').onchange=()=>chooseMeasurement(Number(byId('measurementPoint').value));
+  byId('btnPreviousPoint').onclick=()=>chooseMeasurement(pointReview(S.points,S.selectedId,chemVal).index-1);
+  byId('btnNextPoint').onclick=()=>chooseMeasurement(pointReview(S.points,S.selectedId,chemVal).index+1);
+  byId('btnMaximumPoint').onclick=()=>chooseMeasurement(pointReview(S.points,S.selectedId,chemVal).maximumIndex);
+  byId('btnLocatePoint').onclick=()=>chooseMeasurement(pointReview(S.points,S.selectedId,chemVal).index,true);
   function refreshUi(){
     if(state.pendingFacility&&S.fileFacilities!==state.pendingFacility.before){state.facilitySource=state.pendingFacility.record;state.pendingFacility=null;}
     if(state.pendingFacility&&byId('facFileStatus').textContent.startsWith('오류:'))state.pendingFacility=null;
     const hasData=S.points.length>0;
+    refreshPointReview();
     if(hasData){const values=S.points.map(chemVal);byId('stAvg').textContent=number(values.reduce((a,b)=>a+b,0)/values.length)+' '+curUnit();byId('stMax').textContent=number(values.reduce((a,b)=>Math.max(a,b),-Infinity))+' '+curUnit();}
     byId('legendTitle').textContent=byId('legendTitle').textContent.replace(/\s*[▾▸]\s*$/,'');byId('legendTitle').setAttribute('aria-expanded',String(!byId('legend').classList.contains('min')));
     candidateCard.hidden=!hasData;
@@ -111,7 +147,7 @@
     byId('analysisEmpty').hidden=hasData;
     byId('sampleBadge').hidden=!state.sample;
     byId('workspaceSummary').textContent=hasData?`${state.sample?'가상 예시 · ':''}${S.fileName} · ${S.points.length.toLocaleString('ko-KR')}개 유효 지점${state.quality?.excluded?' · 좌표 제외 '+state.quality.excluded+'행':''}`:`${regionName(S.mode)} · 사업장 확인 모드`;
-    byId('modeTag').textContent=`v6.3 · ${regionName(S.mode)}`;
+    byId('modeTag').textContent=`v6.4 · ${regionName(S.mode)}`;
     const ready=Boolean(map&&!byId('appScreen').classList.contains('hidden'));
     for(const id of ['btnFigurePng','btnFigureSvg','btnConditions','btnMethods'])byId(id).disabled=!ready||state.busy;
     for(const id of ['btnReport','btnMeasurementsCsv','btnCandidateCsv','btnResearchPackage'])byId(id).disabled=!hasData||state.busy;
@@ -145,11 +181,17 @@
   const stem=()=>`MAMO_${state.sample?'SAMPLE_':''}${dateStem()}`;
   const template='No.,Time,Latitude,Longitude,Benzene(ppb),Toluene(ppb),TVOC(ppb),Wind Direction(degree),Wind Speed\n';
   byId('btnTemplate').onclick=()=>{save(new Blob(['\uFEFF'+template],{type:'text/csv;charset=utf-8'}),'MAMO_measurement_template.csv');status('CSV 양식을 저장했습니다. 성분명 뒤 (ppb)를 유지하세요.');};
-  function qualityOf(text,pts){
+  function concentrationFields(fields,type){
+    if(type!=='pm')return fields.filter(f=>/\(ppb\)|tvoc|total/i.test(f));
+    const patterns=[/pm\s*2\.?5/i,/pm\s*10/i,/pm\s*1\.?0/i,/no2/i,/voc/i,/hcl/i],seen=new Set(),result=[];
+    for(const field of fields){const index=patterns.findIndex(pattern=>pattern.test(field.trim()));if(index>=0&&!seen.has(index)){seen.add(index);result.push(field);}}
+    return result;
+  }
+  function qualityOf(text,pts,type){
     const lines=text.split(/\r?\n/);let start=lines.findIndex(l=>/latitude/i.test(l));if(start<0)start=0;
-    const parsed=Papa.parse(lines.slice(start).join('\n'),{header:true,skipEmptyLines:true});const fields=parsed.meta.fields||[];const chemicals=fields.filter(f=>/\(ppb\)|tvoc|total/i.test(f));
+    const parsed=Papa.parse(lines.slice(start).join('\n'),{header:true,skipEmptyLines:true});const fields=parsed.meta.fields||[];const chemicals=concentrationFields(fields,type);
     const missing=parsed.data.reduce((sum,row)=>sum+chemicals.filter(f=>!Number.isFinite(parseFloat(row[f]))).length,0);
-    return {rows:parsed.data.length,validPoints:pts.length,excluded:Math.max(0,parsed.data.length-pts.length),nonNumericConcentrationCells:missing,parserWarningCount:parsed.errors.length,missingValuePolicy:'기존 파서: 개별 성분 빈값·비수치는 0으로 처리; TVOC 빈값·비수치는 성분 합 사용. 원본 자료 확인 필요.',coordinatePolicy:'기존 한국 영역 좌표 검증을 통과한 행만 분석'};
+    return {rows:parsed.data.length,validPoints:pts.length,excluded:Math.max(0,parsed.data.length-pts.length),nonNumericConcentrationCells:missing,parserWarningCount:parsed.errors.length,missingValuePolicy:type==='pm'?'PM 자료: 개별 성분 빈값·비수치는 0으로 처리. 원본 자료 확인 필요.':'VOC 자료: 개별 성분 빈값·비수치는 0으로 처리; TVOC 빈값·비수치는 성분 합 사용. 원본 자료 확인 필요.',coordinatePolicy:'기존 한국 영역 좌표 검증을 통과한 행만 분석'};
   }
   let loadSequence=0;
   loadMeasurement=async function(file, options={}){
@@ -160,7 +202,7 @@
       if(sequence!==loadSequence)return;
       const bytes=await file.arrayBuffer();const digest=window.crypto?.subtle?Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',bytes)),b=>b.toString(16).padStart(2,'0')).join(''):null;
       if(sequence!==loadSequence)return;
-      const {pts,chems,units={}}=parsed;state.sample=Boolean(options.sample);state.source={filename:file.name,sizeBytes:file.size,sha256:digest,lastModifiedISO:new Date(file.lastModified).toISOString(),sample:state.sample};state.quality=qualityOf(text,pts);
+      const {pts,chems,units={}}=parsed;state.sample=Boolean(options.sample);state.source={filename:file.name,sizeBytes:file.size,sha256:digest,lastModifiedISO:new Date(file.lastModified).toISOString(),sample:state.sample};state.quality=qualityOf(text,pts,S.dataType);
       S.points=pts;S.chems=chems;S.units=units;S.fileName=file.name;S.hasDataWind=pts.some(p=>p.wd!==null&&p.ws>0);S.selChem=S.dataType==='pm'?(chems.includes('PM2.5')?'PM2.5':chems[0]):'TVOC';
       byId('selChem').innerHTML=(S.dataType==='pm'?'':'<option value="TVOC">TVOC (합산)</option>')+chems.map(c=>`<option value="${esc(c)}">${esc(c)} (${esc(units[c]||'ppb')})</option>`).join('');byId('selChem').value=S.selChem;
       byId('windModeRow').style.display=S.hasDataWind?'flex':'none';if(!S.hasDataWind){S.windMode='manual';byId('windMode').value='manual';}
@@ -194,7 +236,7 @@
     const candidates=raw.map((c,index)=>({rank:index+1,facility:{...c.f},distanceM:overlap?c.dmin:c.dist,score:overlap?null:c.score*100,bearingDeg:overlap?null:c.bearing,overlapCount:overlap?c.count:null}));
     const selected=points.find(p=>p.id===S.selectedId)||null;const winds=selected?.appliedWind||{wd:S.wd,ws:S.ws};
     const vals=points.map(p=>p.value);const high=points.length?threshold():null;
-    const meta={schema:'mamo-analysis/1.0',appVersion:'6.3',build:window.MAMO_BUILD?{...window.MAMO_BUILD}:null,createdISO:new Date().toISOString(),title:byId('researchTitle').value.trim()||'이동측정 기반 배출원 후보 분석',site:byId('researchSite').value.trim()||null,measurementPeriod:byId('researchPeriod').value.trim()||null,instrumentAndSource:byId('researchInstrument').value.trim()||null,region:regionName(S.mode),sample:state.sample,sampleDefinition:'앱 내장 가상 예시 사용 여부; 사용자 파일의 실제 관측 여부를 검증한 값이 아님',source:state.source?{...state.source}:null,quality:state.quality?{...state.quality}:null,measurement:{type:S.dataType,component:S.selChem,unit:points.length?curUnit():null,count:points.length,mean:vals.length?vals.reduce((a,b)=>a+b,0)/vals.length:null,max:vals.length?vals.reduce((max,value)=>Math.max(max,value),-Infinity):null,selectedId:S.selectedId,percentile:S.thrPct,threshold:high,highCount:points.filter(p=>p.value>=high).length,timeStart:points[0]?.time||null,timeEnd:points.at(-1)?.time||null},analysis:{mode:overlap?'overlap':'single-point',shape:S.shape,stability:S.stab,windMode:S.windMode,selectedWind:winds,weatherObservation:byId('kmaWindInfo').innerText.trim()||null,weatherManuallyEdited:Boolean(S.kma?.edited),autoDistance:S.autoDist,trackingMinutes:S.tmin,manualDistanceM:S.dist,effectiveSelectedDistanceM:points.length&&winds.ws>0?effDist(winds.ws):null,effectiveSelectedSigmaDeg:points.length&&winds.ws>0?effSigma(winds.ws):null,facilitiesVisible:S.facShow,industryFilter:S.facKw||null,facilityCategories:S.facCats?Array.from(S.facCats):null,candidateCount:candidates.length,candidateScoreDefinition:'0–100 = 풍향 일치도 × 거리 가중 × 100; 배출원 확률이나 배출 기여율이 아님',overlapDefinition:'고농도 측정 지점의 풍상 범위에 포함된 지점 수; 방향·단일 점수와 구분'},map:{crs:'EPSG:3857',inputCoordinates:'WGS84 (EPSG:4326)',center:map?{lat:map.getCenter().lat,lon:map.getCenter().lng}:null,zoom:map?.getZoom()??null,bounds:map?{south:map.getBounds().getSouth(),west:map.getBounds().getWest(),north:map.getBounds().getNorth(),east:map.getBounds().getEast()}:null,displayedFacilityMarkers:facLayer?.getLayers().length??0,displayMarkerLimit:600,quietBackground:document.body.classList.contains('quietMap'),includeBasemap:byId('figureBasemap').checked,pngScale:Number(byId('figureScale').value),background:'OpenStreetMap standard raster tiles; current viewport only'},facilitySource:{...state.facilitySource,loadRecord:byId('facFileStatus').innerText.trim()},sources:{facilities:state.facilitySource.kind==='uploaded'?'사용자 업로드 사업장 파일: '+state.facilitySource.filename:'환경부 대기오염물질 배출시설 설치사업장 / 앱 내장 지역 데이터',facilityDataDate:'미기록',facilityCoordinateNote:'원본에 따라 정확 또는 근사 좌표; 사업장별 acc 필드 확인',wind:'기상청 API허브 AWS 또는 사용자 입력 / 측정 파일',basemap:'© OpenStreetMap contributors; https://www.openstreetmap.org/copyright'},limitations:['측정값 내 백분위 분류이며 법정 기준 초과 판단이 아님','풍향·안정도·거리 보정을 적용한 간이 스크리닝이며 배출원 확정이나 정량 기여율을 입증하지 않음','정온·기상 시공간 차이·근사 사업장 좌표 및 자료 시점의 불확실성을 고려해야 함','규제·법적 판단에는 CALPUFF·HYSPLIT 등 정식 확산모델 검증 필요']};
+    const meta={schema:'mamo-analysis/1.0',appVersion:'6.4',build:window.MAMO_BUILD?{...window.MAMO_BUILD}:null,createdISO:new Date().toISOString(),title:byId('researchTitle').value.trim()||'이동측정 기반 배출원 후보 분석',site:byId('researchSite').value.trim()||null,measurementPeriod:byId('researchPeriod').value.trim()||null,instrumentAndSource:byId('researchInstrument').value.trim()||null,region:regionName(S.mode),sample:state.sample,sampleDefinition:'앱 내장 가상 예시 사용 여부; 사용자 파일의 실제 관측 여부를 검증한 값이 아님',source:state.source?{...state.source}:null,quality:state.quality?{...state.quality}:null,measurement:{type:S.dataType,component:S.selChem,unit:points.length?curUnit():null,count:points.length,mean:vals.length?vals.reduce((a,b)=>a+b,0)/vals.length:null,max:vals.length?vals.reduce((max,value)=>Math.max(max,value),-Infinity):null,selectedId:S.selectedId,percentile:S.thrPct,threshold:high,highCount:points.filter(p=>p.value>=high).length,timeStart:points[0]?.time||null,timeEnd:points.at(-1)?.time||null},analysis:{mode:overlap?'overlap':'single-point',shape:S.shape,stability:S.stab,windMode:S.windMode,selectedWind:winds,weatherObservation:byId('kmaWindInfo').innerText.trim()||null,weatherManuallyEdited:Boolean(S.kma?.edited),autoDistance:S.autoDist,trackingMinutes:S.tmin,manualDistanceM:S.dist,effectiveSelectedDistanceM:points.length&&winds.ws>0?effDist(winds.ws):null,effectiveSelectedSigmaDeg:points.length&&winds.ws>0?effSigma(winds.ws):null,facilitiesVisible:S.facShow,industryFilter:S.facKw||null,facilityCategories:S.facCats?Array.from(S.facCats):null,candidateCount:candidates.length,candidateScoreDefinition:'0–100 = 풍향 일치도 × 거리 가중 × 100; 배출원 확률이나 배출 기여율이 아님',overlapDefinition:'고농도 측정 지점의 풍상 범위에 포함된 지점 수; 방향·단일 점수와 구분'},map:{crs:'EPSG:3857',inputCoordinates:'WGS84 (EPSG:4326)',center:map?{lat:map.getCenter().lat,lon:map.getCenter().lng}:null,zoom:map?.getZoom()??null,bounds:map?{south:map.getBounds().getSouth(),west:map.getBounds().getWest(),north:map.getBounds().getNorth(),east:map.getBounds().getEast()}:null,displayedFacilityMarkers:facLayer?.getLayers().length??0,displayMarkerLimit:600,quietBackground:document.body.classList.contains('quietMap'),includeBasemap:byId('figureBasemap').checked,pngScale:Number(byId('figureScale').value),background:'OpenStreetMap standard raster tiles; current viewport only'},facilitySource:{...state.facilitySource,loadRecord:byId('facFileStatus').innerText.trim()},sources:{facilities:state.facilitySource.kind==='uploaded'?'사용자 업로드 사업장 파일: '+state.facilitySource.filename:'환경부 대기오염물질 배출시설 설치사업장 / 앱 내장 지역 데이터',facilityDataDate:'미기록',facilityCoordinateNote:'원본에 따라 정확 또는 근사 좌표; 사업장별 acc 필드 확인',wind:'기상청 API허브 AWS 또는 사용자 입력 / 측정 파일',basemap:'© OpenStreetMap contributors; https://www.openstreetmap.org/copyright'},limitations:['측정값 내 백분위 분류이며 법정 기준 초과 판단이 아님','풍향·안정도·거리 보정을 적용한 간이 스크리닝이며 배출원 확정이나 정량 기여율을 입증하지 않음','정온·기상 시공간 차이·근사 사업장 좌표 및 자료 시점의 불확실성을 고려해야 함','규제·법적 판단에는 CALPUFF·HYSPLIT 등 정식 확산모델 검증 필요']};
     return {meta,points,candidates,selected,units:{...S.units}};
   }
   function pointCsv(snapshot){const chems=Array.from(new Set(snapshot.points.flatMap(p=>Object.keys(p.chem))));return csv([['지점 ID','측정 시각','위도 WGS84','경도 WGS84','선택 성분','선택 농도','선택 단위',...chems.map(c=>c+' ('+(snapshot.units[c]||'ppb')+')'),'파서 반영 TVOC (ppb)','적용 풍향 (deg)','적용 풍속 (m/s)','앱 내장 가상 예시 여부'],...snapshot.points.map(p=>[p.id,p.time,p.lat,p.lon,snapshot.meta.measurement.component,p.value,snapshot.meta.measurement.unit,...chems.map(c=>p.chem[c]),p.tvoc,p.appliedWind.wd,p.appliedWind.ws,snapshot.meta.sample?'예':'아니오'])]);}
