@@ -1,0 +1,6 @@
+.omd/
+.git/
+node_modules/
+dist/
+docs/
+README.md
