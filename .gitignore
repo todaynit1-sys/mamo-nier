@@ -5,3 +5,4 @@ dist/
 .omd/proof/
 .env*
 *.log
+__pycache__/
