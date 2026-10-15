@@ -17,6 +17,7 @@ html = html.replace(/<link[^>]*data-research-source[^>]*>/g, '')
   .replace(/<script[^>]*data-research-source[^>]*><\/script>/g, '');
 const css = await fs.readFile(path.join(root, 'src', 'research.css'), 'utf8');
 const ui = (await fs.readFile(path.join(root, 'src', 'research-archive.js'), 'utf8')) + '\n' +
+  (await fs.readFile(path.join(root, 'src', 'ofp.js'), 'utf8')) + '\n' +
   (await fs.readFile(path.join(root, 'src', 'research.js'), 'utf8'));
 const { code } = await minify(ui, { compress: true, mangle: true, format: { comments: false }, sourceMap: false });
 const hash = crypto.createHash('sha256').update(code).digest('hex').slice(0, 12);
