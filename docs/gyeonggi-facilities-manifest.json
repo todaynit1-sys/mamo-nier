@@ -1,0 +1,3347 @@
+{
+  "schema": "mamo-facilities/1",
+  "region": "경기",
+  "appliedDate": "2026-10-15",
+  "dataDate": null,
+  "province": {
+    "filename": "환경오염물질배출업소현황 (1).csv",
+    "sha256": "541fd4d60551d9cac18dcbdc94eefbe49719cc7567b7c96d068bdc743152a232",
+    "rows": 19357,
+    "encoding": "cp949",
+    "dataDate": null
+  },
+  "mois": {
+    "filename": "자원환경_대기오염물질배출시설설치사업장.csv",
+    "sha256": "0411880c52027826949f7da7f9023b5808f8fa890535a522b7bd927167f1dfdc",
+    "rows": 78758,
+    "encoding": "cp949",
+    "dataDate": null
+  },
+  "statistics": {
+    "moisGyeonggiRows": 26475,
+    "moisValidCoordinates": 20509,
+    "provinceValidRows": 18472,
+    "sourceDisagreementRowsOver100m": 315,
+    "provinceMissingOrInvalidRows": 885,
+    "excludedRows": 826,
+    "recoveredRows": 59,
+    "duplicateRowsRemoved": 565,
+    "displayedFacilities": 17966,
+    "displayedProvinceCoordinates": 17907,
+    "displayedMoisCoordinates": 59,
+    "displayedDisagreementsOver100m": 312
+  },
+  "coordinateSystems": {
+    "province": "EPSG:4326",
+    "mois": "EPSG:5174",
+    "output": "EPSG:4326",
+    "library": "pyproj 3.7.2 / PROJ"
+  },
+  "policy": "도청 목록·WGS84 좌표 우선. 누락 좌표는 정규화 사업장명과 도로명 또는 지번주소가 모두 일치하고 유효 좌표가 하나일 때만 행안부로 보완. 도청 목록 밖 행안부 사업장은 추가하지 않음. 동일 표시행 중복 제거. 미확정 좌표는 지도·후보에서 제외.",
+  "excluded": [
+    {
+      "provinceRow": 110,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 209,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 255,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 314,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 412,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 448,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 819,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 1513,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 1667,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 1668,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 1745,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 1754,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 1764,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 1808,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 1812,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 1869,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 1874,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 1875,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 1908,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 1926,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 1939,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 1946,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2006,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2031,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2047,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2051,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2076,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2080,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2091,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2098,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2108,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2121,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2135,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2183,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2186,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2197,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2212,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2221,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2228,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2234,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2283,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2286,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2287,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2306,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2317,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2338,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2349,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2373,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2399,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2400,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2416,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2434,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2441,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2467,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2476,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2486,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2494,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2506,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2529,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2570,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2574,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2614,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2620,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2624,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2635,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2641,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2669,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2671,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2686,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2689,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2702,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2711,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2736,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2749,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2757,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2774,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2796,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2805,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2827,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2860,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2893,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2923,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2939,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2942,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2956,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 2967,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 3016,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 3020,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 3026,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 3047,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 3084,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 3109,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 3113,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 3125,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 3147,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 3149,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 3200,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 3208,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 3217,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 3230,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 3239,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 3311,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 3315,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 3322,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 3327,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 3386,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 3387,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 3419,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 3422,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 3427,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 3434,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 3442,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 3517,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 3521,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 3527,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 3547,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 3575,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 3590,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 3634,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 3649,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 3673,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 3677,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 3712,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 3726,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 3778,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 3794,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 3833,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 3848,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 3877,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 3879,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 3880,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 3893,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 3907,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 3946,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 4002,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 4059,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 4125,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 4225,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 4244,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 4294,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 4320,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 4342,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 4403,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 4422,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 4802,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 5286,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 5335,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 5396,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 5433,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 5494,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 5697,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 5799,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 5803,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 5814,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 5841,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 5857,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 5860,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 5865,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 5884,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 5898,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 5899,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 5904,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 5919,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 5922,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 5929,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 5934,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 5940,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 5961,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 5981,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 5985,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 5995,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 5999,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6017,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6019,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6032,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6038,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6068,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6078,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6088,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6116,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6119,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6121,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6123,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6130,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6137,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6143,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6179,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6180,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6183,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6184,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6189,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6223,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6225,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6235,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6240,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6252,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6255,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6256,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6264,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6275,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6295,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6296,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6299,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6323,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6343,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6364,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6385,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6392,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6409,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6413,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6417,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6428,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6435,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6436,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6443,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6446,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6461,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6468,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6472,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6498,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6507,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6514,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6517,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6520,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6529,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6532,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6534,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6550,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6556,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6570,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6589,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6596,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6605,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6621,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6626,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6643,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6646,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6659,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6666,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6680,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6693,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6699,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6739,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6756,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6783,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6803,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6805,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6830,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6845,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6848,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6856,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6892,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6899,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 6939,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 7021,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 7023,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 7043,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 7136,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 7194,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 7216,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 7232,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 7301,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 7315,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 7321,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 7339,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 7381,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 7390,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 7406,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 7424,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 7444,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 7449,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 7482,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 7485,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 7496,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 7514,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 7542,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 7546,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 7555,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 7666,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 7677,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 7689,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 7704,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 7709,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 7722,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 7742,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 7745,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 7756,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 7758,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 7765,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 7768,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 7791,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 7792,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 7815,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 7847,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 7848,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 7871,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 7905,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 7916,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 7956,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 7958,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 7963,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 7966,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 8076,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 8110,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 8132,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 8195,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 8218,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 8241,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 8258,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 8287,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 8364,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 8437,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 8475,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 8478,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 8508,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 8632,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 8670,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 8713,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 8763,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 8941,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 8947,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 9025,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 9050,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 9075,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 9243,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 9248,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 9342,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 9351,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 9360,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 9441,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 9508,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 9533,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 9543,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 9581,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 9609,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 9627,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 9631,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 9635,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 9640,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 9683,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 9690,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 9715,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 9719,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 9726,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 9727,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 9730,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 9731,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 9733,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 9754,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 9765,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 9776,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 9790,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 9848,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 9858,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 9869,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 9879,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 9905,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 9922,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 9925,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 9929,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 9974,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 9983,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 10001,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 10009,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 10014,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 10020,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 10063,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 10130,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 10133,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 10153,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 10156,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 10157,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 10166,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 10179,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 10183,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 10199,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 10209,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 10213,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 10214,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 10218,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 10253,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 10255,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 10279,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 10337,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 10626,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 10654,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 10672,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 10675,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 10681,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 10707,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 10712,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 10722,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 10724,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 10728,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 10740,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 10743,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 10748,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 10789,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 10790,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 10794,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 10797,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 10833,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 10840,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 10864,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 10920,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 10959,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 10976,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 10985,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 10986,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 10996,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 11029,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 11068,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 11082,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 11089,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 11129,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 11155,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 11179,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 11186,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 11191,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 11215,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 11216,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 11242,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 11243,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 11244,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 11270,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 11276,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 11340,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 11391,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 11397,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 11398,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 11444,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 11449,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 11465,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 11472,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 11479,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 11539,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 11541,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 11545,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 11558,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 11562,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 11575,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 11590,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 11658,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 11774,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 11780,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 11912,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 11940,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 12075,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 12110,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 12305,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 12321,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 12331,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 12413,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 12426,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 12444,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 12510,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 12544,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 12587,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 12650,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 12710,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 12752,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 12774,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 12784,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 12786,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 12800,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 12864,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 12956,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 12965,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 12968,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 12974,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 12986,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 12991,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 13024,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 13036,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 13038,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 13128,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 13172,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 13206,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 13253,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 13268,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 13308,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 13327,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 13332,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 13411,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 13449,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 13450,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 13459,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 13491,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 13516,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 13534,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 13542,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 13544,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 13606,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 13618,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 13678,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 13713,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 13783,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 13819,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 13820,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 13866,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 13937,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 13972,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 13978,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 14002,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 14031,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 14038,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 14081,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 14100,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 14114,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 14299,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 14346,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 14433,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 14510,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 14555,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 14583,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 14585,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 14605,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 14612,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 14615,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 14619,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 14635,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 14641,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 14645,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 14646,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 14653,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 14654,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 14671,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 14686,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 14696,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 14706,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 14716,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 14722,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 14727,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 14728,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 14732,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 14749,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 14761,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 14768,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 14772,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 14785,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 14803,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 14810,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 14841,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 14853,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 14854,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 14858,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 14869,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 14888,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 14931,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 14949,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 14954,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 14968,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 14982,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 15024,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 15047,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 15048,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 15074,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 15077,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 15130,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 15146,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 15156,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 15163,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 15172,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 15219,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 15248,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 15256,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 15349,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 15368,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 15372,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 15381,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 15440,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 15449,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 15457,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 15472,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 15486,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 15499,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 15507,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 15517,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 15536,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 15592,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 15616,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 15622,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 15640,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 15645,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 15649,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 15650,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 15653,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 15672,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 15682,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 15726,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 15742,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 15760,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 15765,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 15771,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 15787,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 15806,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 15831,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 15832,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 15840,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 15845,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 15848,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 15859,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 15860,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 15869,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 15896,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 15901,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 15902,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 15907,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 15941,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 15951,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 15969,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 15972,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 15978,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 15983,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 15990,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 15997,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 16028,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 16041,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 16044,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 16101,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 16108,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 16129,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 16132,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 16135,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 16160,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 16170,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 16231,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 16276,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 16297,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 16305,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 16324,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 16335,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 16349,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 16354,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 16356,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 16381,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 16397,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 16467,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 16478,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 16506,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 16561,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 16564,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 16628,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 16633,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 16636,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 16657,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 16662,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 16668,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 16702,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 16704,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 16709,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 16751,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 16759,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 16790,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 16795,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 16806,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 16815,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 16833,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 16850,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 16853,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 16860,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 16861,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 16878,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 16906,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 16912,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 16929,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 16947,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 16957,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 16964,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 16965,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 16969,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 16983,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17018,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17036,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17066,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17086,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17092,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17097,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17099,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17117,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17121,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17124,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17142,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17149,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17151,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17166,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17179,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17180,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17182,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17219,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17243,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17245,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17252,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17267,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17297,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17315,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17387,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17388,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17399,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17405,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17414,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17443,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17448,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17488,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17516,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17541,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17553,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17562,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17575,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17595,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17632,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17648,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17661,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17677,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17679,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17691,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17700,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17704,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17706,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17732,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17758,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17762,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17780,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17781,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17787,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17826,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17837,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17842,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17850,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17896,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17899,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17925,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17933,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17958,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17960,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 17997,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18057,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18076,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18078,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18120,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18121,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18131,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18136,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18188,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18190,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18208,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18237,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18238,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18248,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18268,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18270,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18273,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18298,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18321,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18324,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18328,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18360,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18368,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18387,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18400,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18405,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18409,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18428,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18432,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18441,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18442,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18451,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18461,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18499,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18504,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18529,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18530,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18544,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18551,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18560,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18605,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18625,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18668,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18698,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18708,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18710,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18721,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18731,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18785,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18812,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18815,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18821,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18831,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18858,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18860,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18861,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18862,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18866,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18877,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18881,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18899,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18922,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18947,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18955,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18957,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18960,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 18968,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 19005,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 19009,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 19019,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 19072,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 19075,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 19086,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 19101,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 19110,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 19157,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 19169,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 19187,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 19203,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 19209,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 19217,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 19218,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 19223,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 19240,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 19264,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 19266,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 19304,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 19327,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 19328,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 19351,
+      "reason": "no-exact-coordinate-match"
+    },
+    {
+      "provinceRow": 19356,
+      "reason": "no-exact-coordinate-match"
+    }
+  ]
+}
