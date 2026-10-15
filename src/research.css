@@ -1,5 +1,6 @@
 /* Existing repository palette, with clearer typography and responsive task controls. */
 :root{--space:8px;--focus:var(--blue);--panel-width:390px}
+.ofpControls>select{width:100%;min-height:44px;padding:8px}.ofpControls details{font-size:12px;margin:10px 0}.ofpControls summary{cursor:pointer;min-height:44px;padding:10px 0;color:var(--blue)}.ofpControls table{width:100%;border-collapse:collapse;font-size:11px;table-layout:fixed}.ofpControls td,.ofpControls th{padding:6px;text-align:left;border-bottom:1px solid var(--border);overflow-wrap:anywhere}.ofpControls small{color:var(--muted)}
 html{font-size:16px}body{line-height:1.55;color:var(--text);background:var(--bg)}
 button,input,select{font:inherit}button{touch-action:manipulation}button:disabled{cursor:not-allowed;opacity:1;background:#f1f5f9!important;color:#64748b!important;border-color:#cbd5e1!important}
 :focus-visible{outline:3px solid var(--blue);outline-offset:3px}
