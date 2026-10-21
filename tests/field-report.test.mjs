@@ -45,11 +45,15 @@ test('preview and OOXML escape inspection text and display a sample warning',()=
   const html=field.preview(report,'data:image/png;base64,AA=='),xml=field.documentXml(report,{width:890,height:532});
   assert.ok(!html.includes('<script>'));assert.ok(!xml.includes('\u0000'));assert.match(xml,/&lt;script&gt;/);assert.match(html,/실제 관측 또는 점검 결과가 아닙니다/);assert.match(xml,/w:pStyle w:val="Title"/);
 });
+test('inspection preview and Word omit operational footers, wind provenance and analysis captions',()=>{
+  const report=model(),outputs=[field.preview(report,'data:image/png;base64,AA=='),field.documentXml(report,{width:890,height:532})];
+  for(const output of outputs)for(const text of ['조사 참고용','배출 기여율','분석 상태 기록','기상청 AWS','입력 260601','배경지도 미포함','같은 미리보기 상태','풍상 추적','상위 10% 기준'])assert.ok(!output.includes(text),text);
+});
 test('DOCX tables repeat headers and allow content growth while preserving map aspect ratio',()=>{
   const xml=field.documentXml(model(),{width:1000,height:500});
   assert.match(xml,/<w:tblHeader\/>/);assert.ok(!xml.includes('w:hRule="exact"'));assert.match(xml,/<w:pageBreakBefore\/>/);
   const [,x,y]=xml.match(/<wp:extent cx="(\d+)" cy="(\d+)"/);assert.equal(Number(x)/Number(y),2);
-  assert.match(xml,/N&lt;2/);assert.match(xml,/배경지도 미포함/);
+  assert.match(xml,/N&lt;2/);assert.ok(!xml.includes('분석 상태 기록'));assert.ok(!xml.includes('조사 참고용'));assert.ok(!xml.includes('AWS #'));assert.ok(!xml.includes('배경지도 미포함'));
 });
 test('genuine Word ZIP contains internal image/style relationships and no external image reference',async()=>{
   const png=new Blob([Uint8Array.from([137,80,78,71])],{type:'image/png'}),files=field.files(model(),png,{width:890,height:532});
