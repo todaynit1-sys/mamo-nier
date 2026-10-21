@@ -53,7 +53,7 @@ test('DOCX tables repeat headers and allow content growth while preserving map a
   const xml=field.documentXml(model(),{width:1000,height:500});
   assert.match(xml,/<w:tblHeader\/>/);assert.ok(!xml.includes('w:hRule="exact"'));assert.match(xml,/<w:pageBreakBefore\/>/);
   const [,x,y]=xml.match(/<wp:extent cx="(\d+)" cy="(\d+)"/);assert.equal(Number(x)/Number(y),2);
-  assert.match(xml,/N&lt;2/);assert.ok(!xml.includes('분석 상태 기록'));assert.ok(!xml.includes('조사 참고용'));assert.ok(!xml.includes('AWS #'));assert.ok(!xml.includes('배경지도 미포함'));
+  assert.ok(!xml.includes('N&lt;2'));const lastTable=xml.split('<w:tbl>').at(-1);assert.equal((lastTable.split('</w:tr>')[0].match(/<w:tc>/g)||[]).length,5);assert.ok(!field.preview(model(),'data:image/png;base64,AA==').includes('<th scope="col">N</th>'));assert.ok(!xml.includes('분석 상태 기록'));assert.ok(!xml.includes('조사 참고용'));assert.ok(!xml.includes('AWS #'));assert.ok(!xml.includes('배경지도 미포함'));
 });
 test('genuine Word ZIP contains internal image/style relationships and no external image reference',async()=>{
   const png=new Blob([Uint8Array.from([137,80,78,71])],{type:'image/png'}),files=field.files(model(),png,{width:890,height:532});
