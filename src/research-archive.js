@@ -11,7 +11,7 @@
     for (const byte of bytes) value=table[(value ^ byte) & 255] ^ (value >>> 8);
     return (value ^ 0xffffffff) >>> 0;
   }
-  async function zip(files, date=new Date()) {
+  async function zip(files, date=new Date(), options={}) {
     if (files.length>65535) throw new Error('저장할 파일 수가 너무 많습니다.');
     const names=new Set(), local=[], central=[];
     let offset=0, centralSize=0;
@@ -19,7 +19,9 @@
     const dosDate=((year-1980)<<9)|((date.getMonth()+1)<<5)|date.getDate();
     const dosTime=(date.getHours()<<11)|(date.getMinutes()<<5)|Math.floor(date.getSeconds()/2);
     for (const file of files) {
-      if (!file.name || /[\\/\x00]/.test(file.name) || file.name==='.' || file.name==='..' || names.has(file.name)) throw new Error('저장 파일명이 유효하지 않습니다.');
+      if(typeof file.name!=='string'||!file.name)throw new Error('저장 파일명이 유효하지 않습니다.');
+      const invalid=options.allowFolders?/[\\\x00]/.test(file.name)||file.name.split('/').some(part=>!part||part==='.'||part==='..'):/[\\/\x00]/.test(file.name)||file.name==='.'||file.name==='..';
+      if (!file.name || invalid || names.has(file.name)) throw new Error('저장 파일명이 유효하지 않습니다.');
       names.add(file.name);
       const name=encoder.encode(file.name);
       const bytes=file.data instanceof Blob ? new Uint8Array(await file.data.arrayBuffer()) : encoder.encode(String(file.data));
@@ -41,7 +43,7 @@
     const end=new Uint8Array(22), view=new DataView(end.buffer);
     view.setUint32(0,0x06054b50,true);view.setUint16(8,files.length,true);view.setUint16(10,files.length,true);
     view.setUint32(12,centralSize,true);view.setUint32(16,offset,true);
-    return new Blob([...local,...central,end],{type:'application/zip'});
+    return new Blob([...local,...central,end],{type:options.type||'application/zip'});
   }
   globalThis.MamoArchive={zip};
 })();
