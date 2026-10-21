@@ -22,6 +22,8 @@ const ui = (await fs.readFile(path.join(root, 'src', 'research-archive.js'), 'ut
   (await fs.readFile(path.join(root, 'src', 'weather.js'), 'utf8')) + '\n' +
   (await fs.readFile(path.join(root, 'src', 'field-report.js'), 'utf8')) + '\n' +
   (await fs.readFile(path.join(root, 'src', 'field-report-workspace.js'), 'utf8')) + '\n' +
+  (await fs.readFile(path.join(root, 'src', 'tracking.js'), 'utf8')) + '\n' +
+  (await fs.readFile(path.join(root, 'src', 'tracking-workspace.js'), 'utf8')) + '\n' +
   (await fs.readFile(path.join(root, 'src', 'research.js'), 'utf8'));
 const { code } = await minify(ui, { compress: true, mangle: true, format: { comments: false }, sourceMap: false });
 const hash = crypto.createHash('sha256').update(code).digest('hex').slice(0, 12);
