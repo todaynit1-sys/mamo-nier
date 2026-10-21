@@ -4,9 +4,9 @@
   const byId=id=>document.getElementById(id),tracking=MamoTracking;
   S.tmin=tracking.defaults.minutes;S.trackingMaxDistanceM=tracking.defaults.maxDistanceM;
   byId('tmin').value=String(S.tmin);byId('tminVal').textContent=String(S.tmin);
-  byId('autoDistBox').querySelector('.hint').textContent='거리 = 풍속 × 추적시간. 기본 2분·최대 500m로 주변 사업장부터 확인합니다. 조사 범위를 넓히려면 최대 거리를 조정하세요.';
+  byId('autoDistBox').querySelector('.hint').textContent='거리 = 풍속 × 추적시간. 기본 2분·최대 300m로 주변 사업장부터 확인합니다. 조사 범위를 넓히려면 최대 거리를 조정하세요.';
   byId('manDistBox').querySelector('label').textContent='추적 거리';
-  byId('autoDistBox').before(Object.assign(document.createElement('div'),{className:'row',innerHTML:'<label for="trackingMaxDistance">최대 조사 거리</label><select id="trackingMaxDistance"><option value="300">300m</option><option value="500" selected>500m · 기본</option><option value="1000">1km</option><option value="1500">1.5km</option></select>'}));
+  byId('autoDistBox').before(Object.assign(document.createElement('div'),{className:'row',innerHTML:'<label for="trackingMaxDistance">최대 조사 거리</label><select id="trackingMaxDistance"><option value="300" selected>300m · 기본</option><option value="500">500m</option><option value="1000">1km</option><option value="1500">1.5km</option></select>'}));
   byId('dist').max=String(S.trackingMaxDistanceM);
   byId('trackingMaxDistance').onchange=()=>{S.trackingMaxDistanceM=Number(byId('trackingMaxDistance').value);byId('dist').max=String(S.trackingMaxDistanceM);S.dist=Math.min(S.dist,S.trackingMaxDistanceM);byId('dist').value=String(S.dist);byId('distVal').textContent=String(S.dist);renderAll();};
   byId('legendBody').innerHTML=byId('legendBody').innerHTML.replace('추정 확산 범위','풍상 조사 범위');
@@ -32,7 +32,7 @@
   renderOverlap=()=>{
     const data=computeOverlap();S.overlapData=data;const msg=byId('mapMsg');
     data.cones.forEach(cone=>draw(cone,true));
-    byId('selInfo').textContent=`고농도 ${data.nHigh}개 지점의 풍상 범위 중첩${data.skipped?' · 약풍·바람 미기록 '+data.skipped+'개 제외':''}`;
+    byId('selInfo').textContent=`고농도 ${data.nHigh}개 지점의 풍상 범위 중첩${data.skipped?' · 정온·바람 미기록 '+data.skipped+'개 제외':''}`;
     byId('autoDistVal').textContent=`최대 ${S.trackingMaxDistanceM}m`;
     byId('travelHint').textContent=`조사 거리 최대 ${S.trackingMaxDistanceM}m. 사업장 색과 숫자는 범위에 포함된 고농도 지점 수입니다.`;
     msg.textContent=data.nHigh?'':'방향 추적 가능한 고농도 지점이 없습니다. 바람과 기준을 확인하세요.';msg.style.display=data.nHigh?'none':'block';
@@ -43,9 +43,9 @@
     if(S.overlap){renderOverlap();return;}
     const p=S.points.find(point=>point.id===S.selectedId),msg=byId('mapMsg'),cone=p?coneParams(p):null;
     if(!cone){
-      const wind=p?windOf(p):{},calm=Number.isFinite(wind.ws)&&wind.ws<tracking.defaults.calmBelowMs;
-      byId('selInfo').textContent=p?`지점 #${p.id} · ${calm?'약풍으로 방향 추적 보류':'유효한 풍향·풍속 필요'}`:'측정 지점을 선택하세요.';
-      byId('travelHint').textContent=calm?'풍속 0.5m/s 미만에서는 부채꼴과 사업장 후보를 표시하지 않습니다. 해당 지점의 바람을 확인하세요.':'';
+      const wind=p?windOf(p):{},calm=Number.isFinite(wind.ws)&&wind.ws<=tracking.defaults.minimumWindSpeedExclusiveMs;
+      byId('selInfo').textContent=p?`지점 #${p.id} · ${calm?'풍속 0으로 방향 추적 보류':'유효한 풍향·풍속 필요'}`:'측정 지점을 선택하세요.';
+      byId('travelHint').textContent=calm?'풍속 0m/s에서는 방향 추적을 보류합니다. 0보다 큰 약풍은 입력 풍향으로 추적합니다.':'';
       byId('autoDistVal').textContent='추적 보류';msg.textContent=byId('selInfo').textContent;msg.style.display='block';updateCandidates();return;
     }
     currentCone=cone;draw(cone);msg.style.display='none';

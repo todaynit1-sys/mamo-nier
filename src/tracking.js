@@ -3,10 +3,10 @@
   'use strict';
   const rad=Math.PI/180,metresLat=111320;
   const sigmaByStability={A:25,B:20,C:15,D:10,E:7.5,F:5};
-  const defaults={minutes:2,maxDistanceM:500,calmBelowMs:.5};
-  function parameters({wd,ws,stability='D',auto=true,minutes=2,distanceM=300,maxDistanceM=500}){
-    if(!Number.isFinite(wd)||wd<0||wd>360||!Number.isFinite(ws)||ws<defaults.calmBelowMs)return null;
-    const limit=Math.min(1500,Math.max(50,Number(maxDistanceM)||500));
+  const defaults={minutes:2,maxDistanceM:300,minimumWindSpeedExclusiveMs:0};
+  function parameters({wd,ws,stability='D',auto=true,minutes=2,distanceM=300,maxDistanceM=300}){
+    if(!Number.isFinite(wd)||wd<0||wd>360||!Number.isFinite(ws)||ws<=defaults.minimumWindSpeedExclusiveMs)return null;
+    const limit=Math.min(1500,Math.max(50,Number(maxDistanceM)||300));
     const requested=auto?ws*Math.min(15,Math.max(1,Number(minutes)||2))*60:Number(distanceM);
     const R=Math.round(Math.min(limit,Math.max(50,Number.isFinite(requested)?requested:300)));
     const factor=auto?Math.max(.7,Math.min(2.5,(2/ws)**.35)):1;
