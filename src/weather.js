@@ -49,7 +49,7 @@
       const cells=line.split(/[\s,]+/);if(!/^\d{12}$/.test(cells[0]))continue;
       if(Number(cells[1])!==Number(stn)||cells[0]<tm1||cells[0]>tm2)continue;
       const wd=Number(cells[wdIndex]),ws=Number(cells[wsIndex]);
-      // Missing 1-minute means must never be replaced by maximum gust values.
+      // Missing 1-minute means must not be replaced by 10-minute means or gusts.
       if(!Number.isFinite(wd)||wd<0||wd>360||!Number.isFinite(ws)||ws<0||ws>=100)continue;
       records.push({time:cells[0],wd:wd===360?0:wd,ws});
     }

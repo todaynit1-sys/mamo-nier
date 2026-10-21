@@ -20,7 +20,7 @@ test('missing, impossible, future and over-one-day dates are rejected without cu
   assert.throws(()=>weather.validateRange('202601010000','202601020001',now),{code:'range-too-long'});
   assert.throws(()=>weather.validateRange('202701010000','202701010001',now),{code:'future-time'});
 });
-test('WD1/WS1 wind averages wrap north correctly and never substitute gusts for missing means',()=>{
+test('WD1/WS1 wind averages wrap north correctly and never substitute ten-minute means or gusts for missing one-minute means',()=>{
   const result=weather.parseAws(table,{stn:112,...range});assert.deepEqual(result.wind,{wd:0,ws:2,n:2});
   assert.equal(result.observedStart,range.tm1);assert.equal(result.observedEnd,'202606011435');
   assert.equal(weather.parseAws(table,{stn:119,...range}),null);
