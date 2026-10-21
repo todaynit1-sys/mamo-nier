@@ -2,12 +2,13 @@ import http from 'node:http';
 import fs from 'node:fs';
 import path from 'node:path';
 import kmaHandler from '../api/kma.js';
+import institutionHandler from '../api/institution.js';
 const root=path.resolve(import.meta.dirname,'../dist');
 http.createServer(async(req,res)=>{
   const requested=decodeURIComponent(new URL(req.url,'http://localhost').pathname);
-  if(requested==='/api/kma'){
+  if(requested==='/api/kma'||requested==='/api/institution'){
     const chunks=[];let bytes=0;for await(const chunk of req){bytes+=chunk.length;if(bytes>2048){res.writeHead(413,{'Content-Type':'application/json'});res.end(JSON.stringify({ok:false,error:{code:'invalid-request',message:'조회 요청이 너무 큽니다.'}}));return;}chunks.push(chunk);}
-    req.body=Buffer.concat(chunks).toString('utf8');await kmaHandler(req,res);return;
+    req.body=Buffer.concat(chunks).toString('utf8');await (requested==='/api/kma'?kmaHandler:institutionHandler)(req,res);return;
   }
   const file=path.resolve(root,'.'+(requested==='/'?'/index.html':requested));
   if(!file.startsWith(root+path.sep)||!fs.existsSync(file)||!fs.statSync(file).isFile()){res.writeHead(404);res.end('Not found');return;}
