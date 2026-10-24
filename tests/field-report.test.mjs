@@ -12,21 +12,22 @@ const points=[{time:'2026-06-01 14:30:00',chem:{Benzene:0,Toluene:2}},{time:'202
 const fields={complex:'테스트 산업단지',date:'2026. 6. 1.',department:'소속',staff:[{grade:'직급',name:'시험 사용자'},{grade:'',name:''}],notes:'현장 기록'};
 const model=()=>field.buildModel({snapshot:{meta},points,chemicals:['Benzene','Toluene'],units:{Benzene:'ppb',Toluene:'ppb'},fields});
 
-test('automatic inspection notes group actual high points, include threshold ties and preserve metric units',()=>{
+test('automatic inspection notes select threshold ties but include only locations and the requested short wording',()=>{
   const shot={meta:{...meta,measurement:{...meta.measurement,threshold:10}},points:[{lat:37.1,lon:127.1,value:20},{lat:37.1001,lon:127.1,value:10},{lat:37.2,lon:127.2,value:10},{lat:37.3,lon:127.3,value:1}]};
   const plan=field.notePlan(shot);assert.equal(plan.count,3);assert.equal(plan.groups.length,2);assert.equal(plan.groups[0].count,2);
   const text=field.suggestedNotes(plan,['경기도 시험시 시험로','경기도 시험시 검증동']);
-  assert.match(text,/경기도 시험시 시험로 부근 2개 지점/);assert.match(text,/VOCs\(TVOC\)/);assert.match(text,/상위 10%\(10.0 ppb 이상\)/);assert.match(text,/3개이며/);
+  assert.equal(text,'경기도 시험시 시험로 부근 고농도 측정지점 확인\n경기도 시험시 검증동 부근 고농도 측정지점 확인');
   const report=field.buildModel({snapshot:shot,points,chemicals:['Benzene'],units:{Benzene:'ppb'},fields:{...fields,notes:text}});
-  assert.ok(field.preview(report,'data:image/png;base64,AA==').includes(text));assert.ok(field.documentXml(report,{width:1000,height:500}).includes(text));
+  for(const line of text.split('\n')){assert.ok(field.preview(report,'data:image/png;base64,AA==').includes(line));assert.ok(field.documentXml(report,{width:1000,height:500}).includes(line));}
   shot.meta.measurement.component='OFP 상대지수';shot.meta.measurement.unit='ppb·MIR';
-  const ofp=field.suggestedNotes(field.notePlan(shot));assert.match(ofp,/OFP 상대지수/);assert.ok(!ofp.includes('VOCs(TVOC)'));assert.match(ofp,/주소 미확인/);
+  assert.equal(field.suggestedNotes(field.notePlan(shot)),'주소 미확인 지점 고농도 측정지점 확인');
+  assert.equal(field.suggestedNotes(plan,['경기도 시험시 시험로 12','경기도 시험시 시험로 12']),'경기도 시험시 시험로 12 부근 고농도 측정지점 확인');
 });
 test('automatic inspection notes skip flat or absent concentrations and label representative coverage honestly',()=>{
   assert.equal(field.notePlan({meta,points:[]}),null);
   const shot={meta:{...meta,sample:true,measurement:{...meta.measurement,threshold:5}},points:Array.from({length:6},(_,i)=>({lat:37+i*.01,lon:127,value:i?10:1}))};
   const plan=field.notePlan(shot);assert.equal(plan.groups.length,3);assert.equal(plan.omitted,2);
-  const text=field.suggestedNotes(plan);assert.match(text,/^\[가상 예시\]/);assert.match(text,/외 2개 지점/);
+  const text=field.suggestedNotes(plan);assert.equal(text,'[가상 예시] 주소 미확인 지점 고농도 측정지점 확인');
   shot.points.forEach(p=>p.value=10);assert.equal(field.notePlan(shot),null);assert.equal(field.suggestedNotes(null),'');
 });
 

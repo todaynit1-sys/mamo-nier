@@ -38,9 +38,8 @@
   }
   function suggestedNotes(plan,addresses=[]){
     if(!plan)return '';
-    const locations=plan.groups.map((g,i)=>`${addresses[i]||`주소 미확인(위도 ${g.lat.toFixed(5)}, 경도 ${g.lon.toFixed(5)})`} 부근 ${g.count}개 지점`).join(', ');
-    const metric=plan.component==='TVOC'?'VOCs(TVOC)':plan.component;
-    return `${plan.sample?'[가상 예시] ':''}${locations}${plan.omitted?` 외 ${plan.omitted}개 지점`:''}에서 ${metric} 고농도 측정 지점 확인. 전체 측정값 기준 상위 ${plan.top}%(${fmt(plan.threshold)} ${plan.unit} 이상)에 해당하는 지점은 ${plan.count}개이며, 최고 측정값은 ${fmt(plan.max)} ${plan.unit}임.`;
+    const locations=[...new Set(plan.groups.map((g,i)=>addresses[i]?`${addresses[i]} 부근`:'주소 미확인 지점'))];
+    return `${plan.sample?'[가상 예시] ':''}${locations.map(location=>`${location} 고농도 측정지점 확인`).join('\n')}`;
   }
   function reportLines(model){
     const m=model.meta;
