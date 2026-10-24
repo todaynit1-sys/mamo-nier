@@ -65,8 +65,9 @@ test('preview and OOXML escape inspection text and display a sample warning',()=
   assert.ok(!html.includes('<script>'));assert.ok(!xml.includes('\u0000'));assert.match(xml,/&lt;script&gt;/);assert.match(html,/실제 관측 또는 점검 결과가 아닙니다/);assert.match(xml,/w:pStyle w:val="Title"/);
 });
 test('inspection preview and Word omit operational footers, wind provenance and analysis captions',()=>{
-  const report=model(),outputs=[field.preview(report,'data:image/png;base64,AA=='),field.documentXml(report,{width:890,height:532})];
-  for(const output of outputs)for(const text of ['조사 참고용','배출 기여율','분석 상태 기록','기상청 AWS','입력 260601','배경지도 미포함','같은 미리보기 상태','풍상 추적','상위 10% 기준'])assert.ok(!output.includes(text),text);
+  const report=model();report.meta.instrumentAndSource='장비입력값확인';
+  const outputs=[field.preview(report,'data:image/png;base64,AA=='),field.documentXml(report,{width:890,height:532})];
+  for(const output of outputs)for(const text of ['장비 및 자료','장비입력값확인','조사 참고용','배출 기여율','분석 상태 기록','기상청 AWS','입력 260601','배경지도 미포함','같은 미리보기 상태','풍상 추적','상위 10% 기준'])assert.ok(!output.includes(text),text);
 });
 test('DOCX tables repeat headers and allow content growth while preserving map aspect ratio',()=>{
   const xml=field.documentXml(model(),{width:1000,height:500});

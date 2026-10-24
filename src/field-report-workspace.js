@@ -45,7 +45,7 @@
           let addresses=[];if(plan)try{addresses=await resolveAddresses(plan.groups.map(({lat,lon})=>({lat,lon})));}catch{}
           if(token!==revision||getSource()!==context.source)return;
           if(!notesManual)byId('fieldNotes').value=MamoFieldReport.suggestedNotes(plan,addresses);
-          if(plan)byId('fieldNotesHint').innerHTML='현재 고농도 기준의 대표 위치(150m 이내 묶음, 최대 3곳)로 작성했습니다. 주소 미확인 시 좌표를 표시합니다. 인근 주소는 <a href="https://photon.komoot.io/" target="_blank" rel="noopener noreferrer">Photon</a> · <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">© OpenStreetMap contributors</a> 자료입니다. 직접 수정할 수 있습니다.';
+          if(plan)byId('fieldNotesHint').innerHTML='대표 위치 최대 3곳의 인근 주소로 작성했습니다. 같은 도로의 75m 이내 건물번호가 확인되면 함께 표시하며, 없으면 확인된 도로명·지역만 표시합니다. 주소 출처: <a href="https://photon.komoot.io/" target="_blank" rel="noopener noreferrer">Photon</a> · <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">© OpenStreetMap contributors</a>. 직접 수정할 수 있습니다.';
         }
         const model=MamoFieldReport.buildModel({...context,fields:fields()});
         const map=await renderMap(context.snapshot);
