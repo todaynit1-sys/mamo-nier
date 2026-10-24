@@ -24,6 +24,24 @@
     if(new Set(stats.map(row=>row.unit)).size===1)stats.sort((a,b)=>(b.mean??-Infinity)-(a.mean??-Infinity));
     return {title,complex:String(fields.complex||'').trim()||'미기록',date:String(fields.date||'').trim()||'미기록',department:String(fields.department||'').trim()||'미기록',staff:fields.staff.map(row=>({grade:String(row.grade||'').trim(),name:String(row.name||'').trim()})),notes:String(fields.notes||'').trim(),stats,pointCount:points.length,meta};
   }
+  function notePlan(snapshot){
+    const m=snapshot.meta.measurement,points=snapshot.points.filter(p=>Number.isFinite(p.value)&&Number.isFinite(p.lat)&&Number.isFinite(p.lon));
+    if(!points.length||!Number.isFinite(m.threshold))return null;
+    const high=points.filter(p=>p.value>=m.threshold).sort((a,b)=>b.value-a.value);
+    if(!high.length||high[0].value<=0||points.every(p=>p.value===points[0].value))return null;
+    const groups=[];
+    for(const point of high){
+      const group=groups.find(g=>Math.hypot((point.lat-g.lat)*111320,(point.lon-g.lon)*111320*Math.cos(point.lat*Math.PI/180))<=150);
+      if(group)group.count++;else groups.push({lat:point.lat,lon:point.lon,count:1});
+    }
+    return {count:high.length,threshold:m.threshold,top:100-m.percentile,component:m.component,unit:m.unit,max:high[0].value,sample:Boolean(snapshot.meta.sample),groups:groups.slice(0,3),omitted:groups.slice(3).reduce((sum,g)=>sum+g.count,0)};
+  }
+  function suggestedNotes(plan,addresses=[]){
+    if(!plan)return '';
+    const locations=plan.groups.map((g,i)=>`${addresses[i]||`주소 미확인(위도 ${g.lat.toFixed(5)}, 경도 ${g.lon.toFixed(5)})`} 부근 ${g.count}개 지점`).join(', ');
+    const metric=plan.component==='TVOC'?'VOCs(TVOC)':plan.component;
+    return `${plan.sample?'[가상 예시] ':''}${locations}${plan.omitted?` 외 ${plan.omitted}개 지점`:''}에서 ${metric} 고농도 측정 지점 확인. 전체 측정값 기준 상위 ${plan.top}%(${fmt(plan.threshold)} ${plan.unit} 이상)에 해당하는 지점은 ${plan.count}개이며, 최고 측정값은 ${fmt(plan.max)} ${plan.unit}임.`;
+  }
   function reportLines(model){
     const m=model.meta;
     return {map:`${m.measurement.component} (${m.measurement.unit})`,
@@ -69,5 +87,5 @@
       {name:'word/media/map.png',data:png}
     ];
   }
-  return {title,mime,statistics,guessComplex,guessDate,buildModel,preview,files,documentXml};
+  return {title,mime,statistics,guessComplex,guessDate,buildModel,notePlan,suggestedNotes,preview,files,documentXml};
 });
